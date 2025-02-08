@@ -1,5 +1,5 @@
 # WasteNot - Food Tracking App
-## Video Demo: https://www.youtube.com
+## Video Demo: https://youtu.be/wojw4v0wY0M
 
 ## Project Description
 
