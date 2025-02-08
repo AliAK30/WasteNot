@@ -1,50 +1,84 @@
-# Welcome to your Expo app 👋
+# WasteNot - Food Tracking App
+## Video Demo: https://www.youtube.com
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Project Description
 
-## Get started
+### About:
+WasteNot app aims to help users minimize food waste by providing tools to track food items in their kitchen, and offering reminders for expiration dates. It promotes awareness of food consumption habits and helps users make more sustainable decisions to reduce waste, save money, and lower their environmental footprint, thus directly supporting SDG 12. It helps individuals make smarter food choices, reduce the environmental impact of food production, and save money, ultimately leading to less waste sent to landfills.
 
-1. Install dependencies
+### Technologies used:
+The project uses Expo Framework and SDK, built on top of Meta's React Native library for developing cross platform mobile apps and SQLite for storing persistent data.
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+### Project structure:
+```
+|   app.json
+|   expo-env.d.ts
+|   package.json
+|   README.md
+|   tree.txt
+|   tsconfig.json
+|   
++---app
+|   |   main.ts
+|   |   _layout.tsx
+|   |   
+|   \---(tabs)
+|           about.tsx
+|           index.tsx
+|           items.tsx
+|           _layout.tsx
+|           
++---assets
+|   +---fonts
+|   |       SpaceMono-Regular.ttf
+|   |       
+|   \---images
+|           icon.png
+|           ic_launcher.png
+|           splash.png
+|           
+\---components
+        header.tsx
+        Item.tsx
+        ItemAdd.tsx
+        ItemExpired.tsx
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Project Documentation:
 
-## Learn more
+### Folders:
 
-To learn more about developing your project with Expo, look at the following resources:
+- The core code of the app is contained in /app and /components folder
+- /components folder contain code that is reusable
+- /app folder contains screens that the users can navigate on their phones for example: index.tsx is for home screen, items.tsx for items screen and about.tsx for about screen
+- /assets folder contain static data used by the app, like fonts, images, and videos.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Files:
 
-## Join the community
+- package.json: ```containes the dependencies of the project```
 
-Join our community of developers creating universal apps.
+- app.json: ```configuration of the app and expo packages used in it```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- expo-env.d.ts: ```dotenv for expo projects```
+
+- app/main.ts: ```This is the entry point of the app, the first import statement signifies that the app uses expo-router for navigating between screens, the rest of the code is for creating and initializing the database as well as run a background task that handles notifications```
+
+- app/_layout.tsx: ```This file is like a second entry point of our app as this is what is displayed first. It initializes context of the app, that is data on which most components in our app relies on. This file defines the layout, that is part of the screen that remains same. It also define the type of navigations, i.e: Stack, Tabs, Drawer used by the app, and establishes links/routes.```
+
+- app/(tabs)/_layout.tsx:  ```This file defines the layout for Tabs Navigation, which is a bar that you see at the bottom of your phone to navigate to different screen. You can define several tabs (screens) in it and also establish a link/route to its files```
+
+- app/(tabs)/index.tsx: ```This file defines the home screen of this app, it uses ItemExpired and ItemAdd components in /components```
+
+- app/(tabs)/items.tsx: ```This file defines the items screen, and renders the number of items stored in the database, the user can delete the items and add more items through it. It uses Item, ItemAdd components in /components```
+
+- app/(tabs)/about.tsx: ```This file defines the about screen, and shows some information about the app.```
+
+- components/header.tsx: ```The header of the app is defined in this file, it shows at the top of the app on every screen```
+
+- components/Item.tsx: ```This file defines the layout and design of an Item that is displayed on the items screen```
+
+- components/ItemAdd.tsx: ```This file defines a Modal, which is a kind of dialog box that can be displayed over screens, but not considered as a screen itself. This component defines the layout of the Add Item Dialog box and its logic, it also validates user input```
+
+- components/ItemExpired.tsx: ```This file defines the layout of the an Item that is about to be expired (within 7 days) and shown on home screen.```
+
+

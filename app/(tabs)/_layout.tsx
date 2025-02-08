@@ -1,45 +1,76 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-import { Platform } from 'react-native';
+import { StyleSheet } from "react-native";
+import { Tabs } from "expo-router";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+//import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
-import { HapticTab } from '@/components/HapticTab';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import TabBarBackground from '@/components/ui/TabBarBackground';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+
+const iconSize: number = 22;
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-        tabBarBackground: TabBarBackground,
-        tabBarStyle: Platform.select({
-          ios: {
-            // Use a transparent background on iOS to show the blur effect
-            position: 'absolute',
-          },
-          default: {},
-        }),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+    
+      <Tabs
+        screenOptions={{
+          tabBarStyle: styles.tab,
+          headerShown: false,
         }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="index"
+          options={{
+            title: "Home",
+            tabBarLabelStyle: styles.tabBarLabel,
+            tabBarActiveTintColor: "#000000",
+            tabBarInactiveTintColor: "#ffffff",
+            tabBarIcon: ({ color }) => (
+              <FontAwesome5 size={iconSize} name="home" color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="items"
+          options={{
+            title: "Items",
+            tabBarLabelStyle: styles.tabBarLabel,
+            tabBarActiveTintColor: "#000000",
+            tabBarInactiveTintColor: "#ffffff",
+            tabBarIcon: ({ color }) => (
+              <FontAwesome5 size={iconSize} name="list" color={color} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="about"
+          options={{
+            title: "About",
+            tabBarLabelStyle: styles.tabBarLabel,
+            tabBarActiveTintColor: "#000000",
+            tabBarInactiveTintColor: "#ffffff",
+            tabBarIcon: ({ color }) => (
+              <FontAwesome5 size={iconSize} name="info-circle" color={color} />
+            ),
+          }}
+        />
+      </Tabs>
+    
   );
 }
+
+
+const styles = StyleSheet.create({
+  tab: {
+    backgroundColor: "#7c8c74",
+    paddingTop: 7,
+    paddingLeft: 3,
+    paddingRight: 3,
+    height: "10%",
+  },
+
+  tabBarLabel: {
+    fontFamily: "LexendDeca_400Regular",
+    fontSize: 12,
+    width: "100%",
+  },
+});

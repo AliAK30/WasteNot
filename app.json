@@ -3,19 +3,35 @@
     "name": "WasteNot",
     "slug": "WasteNot",
     "version": "1.0.0",
+    "developmentClient": false,
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "androidStatusBar": {
+      "translucent": true
+    },
     "ios": {
-      "supportsTablet": true
+      "infoPlist": {
+      "UIBackgroundModes": [
+         "fetch",
+         "processing"
+       ],
+       "BGTaskSchedulerPermittedIdentifiers": [
+         "com.transistorsoft.fetch"
+       ]
+     },
+      "supportsTablet": true,
+      "jsEngine": "jsc"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+      "softwareKeyboardLayoutMode": "adjustNothing",
+      "permissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.aliahmed.WasteNot"
     },
     "web": {
       "bundler": "metro",
@@ -27,12 +43,30 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      "expo-font",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "WasteNot requires access so that you can store food images",
+          "cameraPermission": "WasteNot requires access so that you can capture food images"
+        }
+      ],
+      "expo-sqlite",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/images/ic_launcher.png",
+          "color": "#ffffff",
+          "enableBackgroundRemoteNotifications": false
+        }
+      ],
+      "react-native-background-fetch"
     ],
     "experiments": {
       "typedRoutes": true
